@@ -18,9 +18,8 @@ for device, url in sensors.items():
     jsonResult = json.loads(res.content)
     time = jsonResult['Data']['Time'][0]
     value = jsonResult['Data']['depth_sonic'][0]
-    update_query = "update latest_readings set taken_at = '" + time + \
-        "', current_value=" + str(value) + \
-        " where device_serial = '" + device + "'"
-    print update_query
-    curs.execute(update_query)
+    update_query = "update latest_readings set taken_at = %s" + \
+        ", current_value = %s" + \
+        " where device_serial = %s"
+    curs.execute(update_query, (time, value, device))
     conn.commit()
