@@ -11,8 +11,7 @@ sensors = {
 }
 logging.debug('sensors: %s', repr(sensors))
 
-conn = psycopg2.connect(dbname='xxxxxx', user='xxxxxxxx',
-                        password='xxxxxxxx', host='xxx.xxx.xxx.xxx')
+conn = psycopg2.connect('')
 logging.debug('conn: %s', repr(conn))
 
 curs = conn.cursor()
